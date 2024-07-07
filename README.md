@@ -5,6 +5,15 @@ Created by: Rodrigo Ancavil del Pino
 
 https://medium.com/analytics-vidhya/slurm-cluster-with-docker-9f242deee601
 
+The docker commands below might needed to be run as root depending on your setup.
+In that case use `sudo` in front of the commands.
+
+Build docker images by:
+
+     $ make -j 3
+
+The `-j 3` option builds the three images in parallel.
+
 To run slurm cluster environment you must execute:
 
      $ docker-compose -f docker-compose-jupyter.yml up -d
