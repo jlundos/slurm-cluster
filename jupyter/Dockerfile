@@ -17,8 +17,8 @@ RUN cd /home/admin && \
   pip3 install jupyterlab_slurm && \
   deactivate
 
-COPY docker-entrypoint.sh /etc/slurm/
-RUN chmod +rx /etc/slurm/docker-entrypoint.sh
+COPY docker-entrypoint.sh /etc/slurm/dockerhelp
+RUN chmod +rx /etc/slurm/dockerhelp/docker-entrypoint.sh
 
 # Ports: 8888: jupyterlab
 EXPOSE 8888
@@ -26,4 +26,4 @@ EXPOSE 8888
 ENV USER admin
 ENV SHELL bash
 
-ENTRYPOINT ["/etc/slurm/docker-entrypoint.sh"]
+ENTRYPOINT ["/etc/slurm/dockerhelp/docker-entrypoint.sh"]

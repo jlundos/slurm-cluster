@@ -15,7 +15,7 @@ RUN apt update -y \
   && apt clean \
   && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /etc/slurm
+RUN mkdir -p /etc/slurm/dockerhelp
 COPY slurm.conf /etc/slurm/
 RUN chmod +r /etc/slurm/slurm.conf
 COPY cgroup.conf /etc/slurm/
@@ -25,12 +25,12 @@ RUN useradd -m admin -s /usr/bin/bash -d /home/admin && \
   adduser admin sudo && \
   echo "admin     ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# Make mount point for shared drive/volume
+# Make mount point for shared drive/volume where development can happen and automatickly be distributed among nodes
 RUN mkdir /home/admin/shared
 
 WORKDIR /home/admin
 
-COPY docker-entrypoint.sh /etc/slurm/
-RUN chmod +rx /etc/slurm/docker-entrypoint.sh
+COPY docker-entrypoint.sh /etc/slurm/dockerhelp
+RUN chmod +rx /etc/slurm/dockerhelp/docker-entrypoint.sh
 
-ENTRYPOINT ["/etc/slurm/docker-entrypoint.sh"]
+ENTRYPOINT ["/etc/slurm/dockerhelp/docker-entrypoint.sh"]
