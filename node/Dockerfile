@@ -33,7 +33,9 @@ COPY cgroup.conf /etc/slurm/
 COPY docker-entrypoint.sh /etc/slurm/
 RUN chmod +rx /etc/slurm/docker-entrypoint.sh
 
-EXPOSE 6818
+# Ports:
+# - 6818 # slurmd
+#EXPOSE 6818
 
 WORKDIR /home/admin
 

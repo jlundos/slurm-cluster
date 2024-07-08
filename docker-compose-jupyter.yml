@@ -6,24 +6,28 @@ services:
         volumes:
                 - ./shared:/home/admin/shared
         ports:
-                - 8888:8888
+                - 8888:8888 # jupyterlab
+        networks:
+                - slurmnet
+        depends_on:
+                - slurmmaster
   slurmmaster:
         image: slurm-master:latest
         hostname: slurmmaster
         user: admin
         volumes:
                 - ./shared:/home/admin/shared
-        ports:
-                - 6817:6817
-                - 6818:6818
-                - 6819:6819
+        networks:
+                - slurmnet
   slurmnode1:
         image: slurm-node:latest
         hostname: slurmnode1
         user: admin
         volumes:
                 - ./shared:/home/admin/shared
-        links:
+        networks:
+                - slurmnet
+        depends_on:
                 - slurmmaster
   slurmnode2:
         image: slurm-node:latest
@@ -31,7 +35,9 @@ services:
         user: admin
         volumes:
                 - ./shared:/home/admin/shared
-        links:
+        networks:
+                - slurmnet
+        depends_on:
                 - slurmmaster
   slurmnode3:
         image: slurm-node:latest
@@ -39,5 +45,10 @@ services:
         user: admin
         volumes:
                 - ./shared:/home/admin/shared
-        links:
+        networks:
+                - slurmnet
+        depends_on:
                 - slurmmaster
+
+networks:
+  slurmnet:

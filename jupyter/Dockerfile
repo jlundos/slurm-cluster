@@ -50,6 +50,8 @@ RUN chmod +rx /etc/slurm/docker-entrypoint.sh
 
 WORKDIR /home/admin
 
+# Ports:
+# - 8888 # jupyterlab
 EXPOSE 8888
 
 ENV USER admin

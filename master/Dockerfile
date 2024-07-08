@@ -33,7 +33,11 @@ COPY cgroup.conf /etc/slurm/
 COPY docker-entrypoint.sh /etc/slurm/
 RUN chmod +rx /etc/slurm/docker-entrypoint.sh
 
-EXPOSE 6817 6818 3306
+# Ports:
+# - 6817 # slurmctld
+# - 6818 # slurmd
+# - 3306 # mariadb
+#EXPOSE 6817 6818 3306
 
 WORKDIR /home/admin
 
