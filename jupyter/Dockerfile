@@ -2,16 +2,14 @@ FROM  slurm-base:latest
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt update -y && \
-  apt install -y \
+RUN apt update -y \
+  && apt full-upgrade -y \
+  && apt install -y \
+  slurm-client \
   python3-pip \
   python3-venv \
-  python3-jupyterlab-server \
-  dirmngr \
-  apt-transport-https \
-  lsb-release \
-  ca-certificates \
-  node-configurable-http-proxy
+  && apt clean \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN cd /home/admin && \
   python3 -m venv venv && \

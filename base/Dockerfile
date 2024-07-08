@@ -2,22 +2,20 @@ FROM ubuntu:24.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt update -y && \
-  apt install -y \
-  munge \
+RUN apt update -y \
+  && apt full-upgrade -y \
+  && apt install -y \
   nano \
   iputils-ping \
-  openssh-server \
-  build-essential \
-  git \
-  wget \
-  slurm-wlm \
-  slurm-wlm-basic-plugins \
   sudo \
+  openssh-server \
   python3 \
   libopenmpi-dev \
-  python3-mpi4py
+  python3-mpi4py \
+  && apt clean \
+  && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir /etc/slurm
 COPY slurm.conf /etc/slurm/
 RUN chmod +r /etc/slurm/slurm.conf
 COPY cgroup.conf /etc/slurm/
