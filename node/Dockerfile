@@ -6,6 +6,8 @@ RUN apt update -y && \
   apt install -y \
   munge \
   nano \
+  iputils-ping \
+  openssh-server \
   build-essential \
   git \
   mariadb-server \
@@ -31,7 +33,7 @@ COPY cgroup.conf /etc/slurm/
 COPY docker-entrypoint.sh /etc/slurm/
 RUN chmod +rx /etc/slurm/docker-entrypoint.sh
 
-EXPOSE 6817 6818 6819
+EXPOSE 6818
 
 WORKDIR /home/admin
 

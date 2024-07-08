@@ -6,6 +6,8 @@ RUN apt update -y && \
   apt install -y \
   munge \
   nano \
+  iputils-ping \
+  openssh-server \
   build-essential \
   git \
   mariadb-server \
