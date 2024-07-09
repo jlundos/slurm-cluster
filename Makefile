@@ -1,4 +1,4 @@
-.PHONY: images base-image master-image node-image jupyter-image clean allclean
+.PHONY: images base-image master-image node-image jupyter-image clean allclean reallyallclean
 
 images: master-image node-image jupyter-image
 
@@ -23,3 +23,10 @@ allclean:
 	cd master && $(MAKE) allclean
 	cd node && $(MAKE) allclean
 	cd jupyter && $(MAKE) allclean
+
+reallyallclean: allclean
+	# Be carefull - will clean ALL containers, images, volumes, etc....
+	# Also stuff unrelated to this project
+	# But docker seem to have a bug where it doesn't correctly remove old unused layers, images, etc.,
+	# so in particular /var/lib/docker/overlay2 grows to two digit GB sizes that doesn't get cleaned up by allclean
+	rm -rf /var/lib/docker/* && apt install --reinstall docker.io
