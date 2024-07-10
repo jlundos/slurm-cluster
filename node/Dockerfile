@@ -7,6 +7,8 @@ RUN apt update -y \
   && apt clean \
   && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p /var/spool/slurmd
+
 COPY docker-entrypoint.sh /etc/slurm/dockerhelp
 RUN chmod +rx /etc/slurm/dockerhelp/docker-entrypoint.sh
 
