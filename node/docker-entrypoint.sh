@@ -7,6 +7,6 @@ sudo cp -a -f ~admin/shared/mungesetup/munge.key /etc/munge/munge.key
 
 sudo service munge start
 sudo service ssh start
-sudo slurmd -N $(hostname)
+sudo service slurmd start
 
 tail -f /dev/null

@@ -1,5 +1,7 @@
 FROM slurm-base:latest
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN apt update -y \
   && apt full-upgrade -y \
   && apt install -y \
