@@ -19,7 +19,7 @@ services:
                 - ./shared:/home/admin/shared
         networks:
                 - slurmnet
-  slurmnode1:
+  slurmnode1: &slurmnode1
         image: slurm-node:latest
         hostname: slurmnode1
         user: admin
@@ -30,25 +30,11 @@ services:
         depends_on:
                 - slurmmaster
   slurmnode2:
-        image: slurm-node:latest
+        <<: *slurmnode1
         hostname: slurmnode2
-        user: admin
-        volumes:
-                - ./shared:/home/admin/shared
-        networks:
-                - slurmnet
-        depends_on:
-                - slurmmaster
   slurmnode3:
-        image: slurm-node:latest
+        <<: *slurmnode1
         hostname: slurmnode3
-        user: admin
-        volumes:
-                - ./shared:/home/admin/shared
-        networks:
-                - slurmnet
-        depends_on:
-                - slurmmaster
 
 networks:
   slurmnet:
