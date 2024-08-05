@@ -6,6 +6,7 @@ RUN apt update -y \
   && apt full-upgrade -y \
   && apt install -y \
   slurmd \
+  slurm-client \
   && apt clean \
   && rm -rf /var/lib/apt/lists/*
 
