@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 #SBATCH --job-name=test
-#SBATCH --output=result.out
+#SBATCH --output=first_test.out
 #
-#SBATCH --ntasks=6
+#SBATCH --ntasks=24
 
 # Not necessary as we have first_test.py on a shared directory:
 ##sbcast -f test.py /tmp/test.py
