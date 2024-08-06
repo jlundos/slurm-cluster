@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#SBATCH --job-name=test
+#SBATCH --job-name=first_test
 #SBATCH --output=first_test.out
 #
 #SBATCH --ntasks=24
