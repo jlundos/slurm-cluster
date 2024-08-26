@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sudo sed -i "s/REPLACE_IT/CPUs=$(nproc)/g" /etc/slurm/slurm.conf
+# Set CPUs etc in slurm.conf - the same for all docker containers
+sudo /etc/slurm/dockerhelp/fix_cpu_in_slurmconf.sh
 
 sudo service ssh start
 

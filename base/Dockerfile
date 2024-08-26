@@ -5,6 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update -y \
   && apt full-upgrade -y \
   && apt install -y \
+  less \
   nano \
   iputils-ping \
   sudo \
@@ -32,5 +33,7 @@ WORKDIR /home/admin
 
 COPY docker-entrypoint.sh /etc/slurm/dockerhelp
 RUN chmod +rx /etc/slurm/dockerhelp/docker-entrypoint.sh
+COPY fix_cpu_in_slurmconf.sh /etc/slurm/dockerhelp
+RUN chmod +rx /etc/slurm/dockerhelp/fix_cpu_in_slurmconf.sh
 
 ENTRYPOINT ["/etc/slurm/dockerhelp/docker-entrypoint.sh"]
