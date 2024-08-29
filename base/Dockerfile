@@ -1,10 +1,13 @@
 FROM ubuntu:24.04
 
+RUN echo 'APT::Install-Suggests "0";' >> /etc/apt/apt.conf.d/00-docker
+RUN echo 'APT::Install-Recommends "0";' >> /etc/apt/apt.conf.d/00-docker
+
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt update -y \
-  && apt full-upgrade -y \
-  && apt install -y \
+RUN apt-get update -y \
+  && apt-get dist-upgrade -y \
+  && apt-get install -y \
   less \
   nano \
   iputils-ping \
@@ -13,7 +16,7 @@ RUN apt update -y \
   python3 \
   libopenmpi-dev \
   python3-mpi4py \
-  && apt clean \
+  && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /etc/slurm/dockerhelp
