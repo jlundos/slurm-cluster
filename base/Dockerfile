@@ -14,8 +14,6 @@ RUN apt-get update -y \
   sudo \
   openssh-server \
   python3 \
-  libopenmpi-dev \
-  python3-mpi4py \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
