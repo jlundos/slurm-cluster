@@ -5,7 +5,7 @@ import os
 import socket
 from datetime import datetime as dt
 
-description = """First test: run the same first_test.py program as many times as ntasks specified in the first_job.sh script"""
+description = """Test 1: run the same test_1.py program as many times as ntasks specified in the job_1.sh script"""
 sleep_sec = 5
 
 if __name__ == '__main__':
