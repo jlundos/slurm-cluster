@@ -16,6 +16,7 @@ jupyter-image: base-image
 
 clean:
 	docker system prune
+	cd shared && $(MAKE) clean
 
 allclean:
 	docker system prune -a
